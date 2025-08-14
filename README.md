@@ -1,11 +1,10 @@
 # Go Command Broadcaster
 
-A simple Go tool that lets a server broadcast shell/command-line instructions to multiple connected clients.
+A simple Go tool that lets a server broadcast shell/command-line instructions to multiple connected clients on windows.
 
 ## Features
 - Server can send commands to all connected clients
 - Clients execute commands and return output
-- Works on Windows, Linux, and macOS
 
 ## Usage
 
