@@ -10,6 +10,8 @@ import (
 	"strings"
 )
 
+const clientAuthKey = "mysecret123" // must match server
+
 func startClient() {
 	scanner := bufio.NewScanner(os.Stdin)
 
@@ -26,10 +28,17 @@ func startClient() {
 		return
 	}
 	defer conn.Close()
+
+	// Send auth key
+	_, err = conn.Write([]byte(clientAuthKey))
+	if err != nil {
+		fmt.Println("Auth failed:", err)
+		return
+	}
+
 	fmt.Println("Connected to server.")
 
 	reader := bufio.NewReader(conn)
-
 	for {
 		cmdLine, err := reader.ReadString('\n')
 		if err != nil {
